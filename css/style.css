@@ -1,26 +1,24 @@
 /* ==========================================================================
-   Goal Naukri - Clean Mobile-First & Desktop Design System
+   Goal Naukri - 1:1 Pixel-Perfect Responsive Theme (Desktop & Mobile)
    ========================================================================== */
 
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap");
-@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
 
 :root {
-    --contrast: #212121;
-    --contrast-2: #2f4468;
-    --contrast-3: #878787;
-    --base: #fafafa;
-    --base-2: #f7f8f9;
-    --base-3: #ffffff;
-    --accent: #242226;
-    --accent-2: #1b78e2;
+    --primary-navy: #020953;
+    --navy-hover: #000000;
+    --accent-blue: #1b78e2;
     --accent-hover: #1e59be;
-    --nav-bg: #020953;
-    --nav-hover: #1e59be;
-    --footer-bg: #020953;
-    --footer-bottom: #000000;
-    --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
-    --card-radius: 12px;
+    --heading-color: #2f4468;
+    --text-color: #2b2b2b;
+    --meta-color: #878787;
+    --badge-bg: #fce8ef;
+    --badge-text: #e6265f;
+    --bg-body: #efefef;
+    --card-bg: #ffffff;
+    --card-radius: 8px;
+    --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 *, *::before, *::after {
@@ -36,11 +34,11 @@ html {
 body {
     margin: 0;
     padding: 0;
-    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: 16px;
     line-height: 1.65;
-    color: var(--contrast);
-    background-color: #ebedf2;
+    color: var(--text-color);
+    background-color: var(--bg-body);
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
     width: 100%;
@@ -48,9 +46,9 @@ body {
 }
 
 a {
-    color: var(--accent-2);
+    color: var(--accent-blue);
     text-decoration: none;
-    transition: all 0.2s ease;
+    transition: color 0.2s ease;
 }
 
 a:hover, a:focus {
@@ -68,12 +66,12 @@ img {
    ========================================================================== */
 
 .site-header {
-    background-color: var(--nav-bg);
+    background-color: var(--primary-navy);
     color: #ffffff;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
     width: 100%;
 }
 
@@ -96,49 +94,21 @@ img {
 .site-branding {
     display: flex;
     align-items: center;
-    gap: 12px;
     text-decoration: none !important;
 }
 
-.logo-gn-badge {
-    background: linear-gradient(135deg, #1b78e2, #e6265f);
-    color: #ffffff;
-    font-weight: 800;
-    font-size: 17px;
-    padding: 6px 10px;
-    border-radius: 8px;
-    letter-spacing: 0.5px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.logo-text-wrap {
-    display: flex;
-    flex-direction: column;
-}
-
-.logo-title {
-    color: #ffffff;
-    font-size: 21px;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    line-height: 1.15;
-}
-
-.logo-tagline {
-    color: #cbd5e1;
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+.site-logo-img {
+    height: 46px;
+    width: auto;
+    max-width: 240px;
+    object-fit: contain;
+    display: block;
 }
 
 .header-nav-actions {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
 }
 
 /* Desktop Menu */
@@ -163,38 +133,66 @@ img {
     font-size: 15px;
     font-weight: 600;
     text-decoration: none;
-    transition: background-color 0.2s ease, color 0.2s ease;
+    transition: background-color 0.2s ease;
 }
 
 .desktop-menu li a:hover,
 .desktop-menu li.active a,
 .desktop-menu li a.active {
-    background-color: #000000;
+    background-color: var(--navy-hover);
     color: #ffffff;
 }
 
-/* Mobile Menu Button */
-.mobile-menu-btn {
+.desktop-search-btn {
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+    line-height: 65px;
+    font-size: 16px;
+    transition: background-color 0.2s ease;
+}
+
+.desktop-search-btn:hover {
+    background-color: var(--navy-hover);
+}
+
+/* Mobile Toggle & Search */
+.mobile-nav-tools {
     display: none;
-    background: rgba(255, 255, 255, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 8px;
+    align-items: center;
+    gap: 8px;
+}
+
+.mobile-menu-btn {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 6px;
     color: #ffffff;
     font-size: 14px;
     font-weight: 600;
-    padding: 8px 14px;
+    padding: 7px 12px;
     cursor: pointer;
+    display: inline-flex;
     align-items: center;
-    gap: 8px;
-    transition: all 0.2s ease;
+    gap: 6px;
 }
 
-.mobile-menu-btn:hover, .mobile-menu-btn:focus {
-    background: rgba(255, 255, 255, 0.25);
-    outline: none;
+.mobile-menu-btn:hover {
+    background: rgba(255, 255, 255, 0.22);
 }
 
-/* Mobile Dropdown Drawer */
+.mobile-search-btn {
+    color: #ffffff;
+    font-size: 16px;
+    padding: 6px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Mobile Drawer */
 .mobile-nav-drawer {
     display: none;
     background-color: #01063d;
@@ -208,7 +206,7 @@ img {
 }
 
 @keyframes slideDown {
-    from { opacity: 0; transform: translateY(-10px); }
+    from { opacity: 0; transform: translateY(-8px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
@@ -226,14 +224,12 @@ img {
     color: #ffffff;
     font-size: 15px;
     font-weight: 600;
-    border-radius: 6px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 }
 
 .mobile-menu-list li a:hover,
-.mobile-menu-list li.active a,
-.mobile-menu-list li a.active {
-    background-color: #1e59be;
+.mobile-menu-list li.active a {
+    background-color: var(--accent-hover);
     color: #ffffff;
 }
 
@@ -264,15 +260,15 @@ img {
 }
 
 .drawer-social-btn.wa {
-    background: linear-gradient(135deg, #25D366, #128C7E);
+    background: #25D366;
 }
 
 .drawer-social-btn.tg {
-    background: linear-gradient(135deg, #0088cc, #005f8f);
+    background: #0088cc;
 }
 
 /* ==========================================================================
-   Main Layout Grid
+   Main Grid Layout
    ========================================================================== */
 
 .gn-main-wrapper {
@@ -293,12 +289,12 @@ img {
 
 .gn-sidebar-area {
     width: 30%;
-    min-width: 320px;
+    min-width: 310px;
     flex-shrink: 0;
 }
 
 /* ==========================================================================
-   Post Cards (Homepage / Archives)
+   Post Cards (Exact Goal Naukri Layout)
    ========================================================================== */
 
 .gn-posts-list {
@@ -309,13 +305,13 @@ img {
 }
 
 .gn-post-card {
-    background: #ffffff;
+    background: var(--card-bg);
     border-radius: var(--card-radius);
     padding: 26px;
     box-shadow: var(--card-shadow);
     border: 1px solid rgba(0, 0, 0, 0.04);
     display: flex;
-    gap: 24px;
+    gap: 25px;
     align-items: center;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     width: 100%;
@@ -323,36 +319,18 @@ img {
 
 .gn-post-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.09);
-}
-
-.gn-card-thumb {
-    flex-shrink: 0;
-    width: 280px;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.gn-card-thumb img {
-    width: 100%;
-    height: 170px;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.gn-post-card:hover .gn-card-thumb img {
-    transform: scale(1.04);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
 }
 
 .gn-card-body {
-    flex: 1;
+    flex: 1 1 58%;
     min-width: 0;
 }
 
 .gn-card-badge {
     display: inline-block;
-    background-color: #fce8ef;
-    color: #e6265f;
+    background-color: var(--badge-bg);
+    color: var(--badge-text);
     font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
@@ -363,18 +341,19 @@ img {
 }
 
 .gn-card-title {
-    font-size: 20px;
+    font-size: 21px;
     font-weight: 700;
-    line-height: 1.4;
-    margin: 0 0 8px 0;
+    line-height: 1.38;
+    margin: 0 0 10px 0;
+    color: var(--heading-color);
 }
 
 .gn-card-title a {
-    color: var(--contrast-2);
+    color: var(--heading-color);
 }
 
 .gn-card-title a:hover {
-    color: var(--accent-2);
+    color: var(--accent-blue);
 }
 
 .gn-card-meta {
@@ -382,12 +361,15 @@ img {
     align-items: center;
     gap: 12px;
     font-size: 13px;
-    color: var(--contrast-3);
-    margin-bottom: 10px;
+    color: var(--meta-color);
+    margin-bottom: 12px;
 }
 
-.gn-card-meta i {
-    color: #a0aec0;
+.gn-card-meta img {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: inline-block;
 }
 
 .gn-card-excerpt {
@@ -403,14 +385,33 @@ img {
     color: #ffffff !important;
     font-size: 13px;
     font-weight: 600;
-    padding: 8px 16px;
-    border-radius: 6px;
+    padding: 7px 18px;
+    border-radius: 4px;
     transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
 .gn-btn-readmore:hover {
-    background-color: #1e59be;
+    background-color: var(--accent-hover);
     transform: translateY(-1px);
+}
+
+.gn-card-thumb {
+    flex: 0 0 42%;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.gn-card-thumb img {
+    width: 100%;
+    height: 175px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    display: block;
+}
+
+.gn-post-card:hover .gn-card-thumb img {
+    transform: scale(1.03);
 }
 
 /* ==========================================================================
@@ -428,8 +429,8 @@ img {
 
 .gn-article-badge {
     display: inline-block;
-    background-color: #fce8ef;
-    color: #e6265f;
+    background-color: var(--badge-bg);
+    color: var(--badge-text);
     font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
@@ -451,7 +452,7 @@ img {
     align-items: center;
     gap: 15px;
     font-size: 14px;
-    color: var(--contrast-3);
+    color: var(--meta-color);
     padding-bottom: 18px;
     border-bottom: 1px solid #e2e8f0;
     margin-bottom: 25px;
@@ -459,7 +460,7 @@ img {
 
 .gn-article-featured-img {
     margin: 20px 0 30px;
-    border-radius: 10px;
+    border-radius: 8px;
     overflow: hidden;
 }
 
@@ -467,26 +468,27 @@ img {
     width: 100%;
     max-height: 480px;
     object-fit: cover;
+    border-radius: 8px;
 }
 
 .gn-article-content {
     font-size: 17px;
     line-height: 1.8;
-    color: #2d3748;
+    color: #2b2b2b;
     word-break: break-word;
 }
 
 .gn-article-content h2 {
     font-size: 24px;
-    color: var(--contrast-2);
+    color: var(--heading-color);
     margin: 32px 0 15px;
     padding-bottom: 8px;
-    border-bottom: 2px solid #edf2f7;
+    border-bottom: 2px solid #eaedf3;
 }
 
 .gn-article-content h3 {
     font-size: 20px;
-    color: var(--contrast-2);
+    color: var(--heading-color);
     margin: 25px 0 12px;
 }
 
@@ -501,7 +503,7 @@ img {
 }
 
 .gn-article-content th {
-    background-color: #020953;
+    background-color: var(--primary-navy);
     color: #ffffff;
     font-weight: 600;
     padding: 12px 16px;
@@ -580,14 +582,14 @@ img {
     color: #1a253c;
     margin: 0 0 16px 0;
     padding-bottom: 8px;
-    border-bottom: 2px solid #020953;
+    border-bottom: 2px solid var(--primary-navy);
 }
 
 /* Search Box */
 .gn-search-form {
     display: flex;
     border: 1px solid #cbd5e1;
-    border-radius: 6px;
+    border-radius: 4px;
     overflow: hidden;
     background: #ffffff;
 }
@@ -602,7 +604,7 @@ img {
 }
 
 .gn-search-btn {
-    background: var(--nav-bg);
+    background: var(--primary-navy);
     color: #ffffff;
     border: none;
     padding: 0 18px;
@@ -612,7 +614,7 @@ img {
 }
 
 .gn-search-btn:hover {
-    background: var(--nav-hover);
+    background: var(--accent-hover);
 }
 
 /* CTA Join Buttons */
@@ -622,7 +624,7 @@ img {
     justify-content: center;
     gap: 12px;
     padding: 14px 20px;
-    border-radius: 8px;
+    border-radius: 6px;
     font-weight: 700;
     font-size: 15px;
     color: #ffffff !important;
@@ -640,11 +642,11 @@ img {
 }
 
 .gn-join-btn.wa {
-    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    background: #25D366;
 }
 
 .gn-join-btn.tg {
-    background: linear-gradient(135deg, #0088cc 0%, #005f8f 100%);
+    background: #0088cc;
 }
 
 /* Trending Posts Widget */
@@ -675,7 +677,7 @@ img {
     width: 65px;
     height: 65px;
     flex-shrink: 0;
-    border-radius: 8px;
+    border-radius: 6px;
     object-fit: cover;
 }
 
@@ -692,16 +694,16 @@ img {
 }
 
 .gn-trending-title a {
-    color: var(--contrast-2);
+    color: var(--heading-color);
 }
 
 .gn-trending-title a:hover {
-    color: var(--accent-2);
+    color: var(--accent-blue);
 }
 
 .gn-trending-date {
     font-size: 12px;
-    color: var(--contrast-3);
+    color: var(--meta-color);
 }
 
 /* ==========================================================================
@@ -724,8 +726,8 @@ img {
     height: 40px;
     padding: 0 14px;
     background: #ffffff;
-    color: var(--contrast-2);
-    border-radius: 6px;
+    color: var(--heading-color);
+    border-radius: 4px;
     font-weight: 600;
     font-size: 14px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.06);
@@ -734,7 +736,7 @@ img {
 
 .gn-page-btn:hover,
 .gn-page-btn.active {
-    background: var(--nav-bg);
+    background: var(--primary-navy);
     color: #ffffff !important;
 }
 
@@ -743,7 +745,7 @@ img {
    ========================================================================== */
 
 .gn-footer {
-    background-color: var(--footer-bg);
+    background-color: var(--primary-navy);
     color: #ffffff;
     margin-top: 60px;
     width: 100%;
@@ -765,7 +767,7 @@ img {
     font-weight: 700;
     margin: 0 0 16px 0;
     padding-bottom: 8px;
-    border-bottom: 2px solid #1e59be;
+    border-bottom: 2px solid var(--accent-hover);
 }
 
 .gn-footer-col p {
@@ -807,7 +809,7 @@ img {
 .gn-sub-input {
     width: 100%;
     padding: 12px 14px;
-    border-radius: 6px;
+    border-radius: 4px;
     border: 1px solid #334155;
     background: #061178;
     color: #ffffff;
@@ -821,11 +823,11 @@ img {
 
 .gn-sub-btn {
     width: 100%;
-    background: #1e59be;
+    background: var(--accent-hover);
     color: #ffffff;
     border: none;
     padding: 12px;
-    border-radius: 6px;
+    border-radius: 4px;
     font-weight: 700;
     font-size: 15px;
     cursor: pointer;
@@ -837,7 +839,7 @@ img {
 }
 
 .gn-footer-bottom {
-    background-color: var(--footer-bottom);
+    background-color: #000000;
     color: #94a3b8;
     padding: 20px 0;
     font-size: 14px;
@@ -882,7 +884,7 @@ img {
 }
 
 /* ==========================================================================
-   Responsive Breakpoints (Mobile & Tablet)
+   Responsive Mobile (< 768px) & Tablet (< 992px)
    ========================================================================== */
 
 @media (max-width: 992px) {
@@ -906,28 +908,21 @@ img {
 @media (max-width: 768px) {
     .inside-header {
         padding: 10px 16px;
-        min-height: 58px;
+        min-height: 56px;
     }
 
-    .logo-gn-badge {
-        font-size: 15px;
-        padding: 4px 8px;
+    .site-logo-img {
+        height: 36px;
+        max-width: 180px;
     }
 
-    .logo-title {
-        font-size: 18px;
+    .main-desktop-nav,
+    .desktop-search-btn {
+        display: none !important;
     }
 
-    .logo-tagline {
-        font-size: 10px;
-    }
-
-    .main-desktop-nav {
-        display: none;
-    }
-
-    .mobile-menu-btn {
-        display: inline-flex;
+    .mobile-nav-tools {
+        display: flex !important;
     }
 
     .gn-main-wrapper {
@@ -935,27 +930,57 @@ img {
         margin: 16px auto;
     }
 
+    /* Mobile Card Vertical Stack (Exact Goal Naukri Mobile Layout) */
     .gn-post-card {
-        flex-direction: column;
-        align-items: stretch;
-        padding: 16px;
-        gap: 14px;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        padding: 18px 16px !important;
+        gap: 0 !important;
     }
 
-    .gn-card-thumb {
+    .gn-card-body {
+        order: 1;
         width: 100%;
     }
 
-    .gn-card-thumb img {
-        height: auto;
-        aspect-ratio: 16/9;
-        max-height: 220px;
-        border-radius: 8px;
+    .gn-card-badge {
+        margin-bottom: 6px;
     }
 
     .gn-card-title {
         font-size: 18px;
         line-height: 1.4;
+        margin-bottom: 8px;
+    }
+
+    .gn-card-meta {
+        margin-bottom: 12px;
+    }
+
+    /* Image in the middle on mobile */
+    .gn-card-thumb {
+        order: 2;
+        width: 100% !important;
+        margin-bottom: 12px;
+    }
+
+    .gn-card-thumb img {
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 16/9;
+        max-height: 220px;
+        border-radius: 8px;
+    }
+
+    .gn-card-excerpt {
+        order: 3;
+        font-size: 14px;
+        margin-bottom: 14px;
+    }
+
+    .gn-btn-readmore {
+        order: 4;
+        align-self: flex-start;
     }
 
     .gn-article-container {
