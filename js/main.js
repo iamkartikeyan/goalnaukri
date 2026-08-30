@@ -4,37 +4,27 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Mobile Menu Toggle
-    const mobileToggle = document.getElementById('mobile-toggle');
-    const mobileDrawer = document.getElementById('mobile-drawer');
+    const menuToggle = document.querySelector('.menu-toggle');
+    const siteNav = document.getElementById('site-navigation') || document.querySelector('.main-navigation');
     
-    if (mobileToggle && mobileDrawer) {
-        const iconBars = mobileToggle.querySelector('.menu-icon-bars');
-        const iconClose = mobileToggle.querySelector('.menu-icon-close');
-
-        const toggleDrawer = (e) => {
+    if (menuToggle && siteNav) {
+        const toggleMenu = (e) => {
             if (e) {
                 e.preventDefault();
                 e.stopPropagation();
             }
-            const isOpen = mobileDrawer.classList.toggle('open');
-            mobileToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-            if (iconBars && iconClose) {
-                iconBars.style.display = isOpen ? 'none' : 'inline-block';
-                iconClose.style.display = isOpen ? 'inline-block' : 'none';
-            }
+            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+            menuToggle.setAttribute('aria-expanded', !isExpanded);
+            siteNav.classList.toggle('toggled');
         };
 
-        mobileToggle.addEventListener('click', toggleDrawer);
+        menuToggle.addEventListener('click', toggleMenu);
 
-        // Close drawer when tapping outside
+        // Close menu when tapping outside
         document.addEventListener('click', (e) => {
-            if (mobileDrawer.classList.contains('open') && !mobileDrawer.contains(e.target) && !mobileToggle.contains(e.target)) {
-                mobileDrawer.classList.remove('open');
-                mobileToggle.setAttribute('aria-expanded', 'false');
-                if (iconBars && iconClose) {
-                    iconBars.style.display = 'inline-block';
-                    iconClose.style.display = 'none';
-                }
+            if (siteNav.classList.contains('toggled') && !siteNav.contains(e.target) && !menuToggle.contains(e.target)) {
+                siteNav.classList.remove('toggled');
+                menuToggle.setAttribute('aria-expanded', 'false');
             }
         });
     }

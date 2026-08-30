@@ -9,48 +9,35 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<header class="site-header" id="site-header">
-    <div class="inside-header">
-        <div class="header-logo-wrap">
-            <a href="/" class="site-branding" rel="home">
-                <img src="/wp-content/uploads/2026/05/Final.png" alt="Goal Naukri" class="site-logo-img" width="350" height="70">
-            </a>
-        </div>
-        <div class="header-nav-actions">
-            <nav class="main-desktop-nav" id="desktop-navigation">
-                <ul class="desktop-menu">
-                    <li class=""><a href="/">Home</a></li>
+<header class="site-header">
+    <nav class="main-navigation" id="site-navigation" aria-label="Primary">
+        <div class="inside-navigation">
+            <div class="navigation-branding">
+                <div class="site-logo">
+                    <a href="/" rel="home">
+                        <img class="header-image is-logo-image" src="/wp-content/uploads/2026/05/Final.png" alt="Goal Naukri" width="350" height="70">
+                    </a>
+                </div>
+            </div>
+            <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false" aria-label="Toggle Menu">
+                <svg viewBox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M0 96c0-13.255 10.745-24 24-24h464c13.255 0 24 10.745 24 24s-10.745 24-24 24H24c-13.255 0-24-10.745-24-24zm0 160c0-13.255 10.745-24 24-24h464c13.255 0 24 10.745 24 24s-10.745 24-24 24H24c-13.255 0-24-10.745-24-24zm0 160c0-13.255 10.745-24 24-24h464c13.255 0 24 10.745 24 24s-10.745 24-24 24H24c-13.255 0-24-10.745-24-24z" /></svg>
+                <span>Menu</span>
+            </button>
+            <div id="primary-menu" class="main-nav">
+                <ul id="menu-main-menu" class="menu">
+                    <li class="active current-menu-item"><a href="/">Home</a></li>
                     <li class=""><a href="/category/career-guide/">Career Guide</a></li>
                     <li class=""><a href="/about-us/">About Us</a></li>
                     <li class=""><a href="/contact-us/">Contact Us</a></li>
                 </ul>
-                <a href="#search" class="desktop-search-btn" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></a>
-            </nav>
-            <div class="mobile-nav-tools">
-                <button class="mobile-menu-btn" id="mobile-toggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
-                    <i class="fa-solid fa-bars menu-icon-bars"></i>
-                    <i class="fa-solid fa-xmark menu-icon-close" style="display:none;"></i>
-                    <span class="menu-label">Menu</span>
-                </button>
-                <a href="#search" class="mobile-search-btn" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></a>
+            </div>
+            <div class="menu-bar-items">
+                <span class="menu-bar-item search-item">
+                    <a aria-label="Open Search Bar" href="#search"><i class="fa-solid fa-magnifying-glass"></i></a>
+                </span>
             </div>
         </div>
-    </div>
-    <div class="mobile-nav-drawer" id="mobile-drawer">
-        <ul class="mobile-menu-list">
-            <li class=""><a href="/"><i class="fa-solid fa-house"></i> Home</a></li>
-            <li class=""><a href="/category/career-guide/"><i class="fa-solid fa-graduation-cap"></i> Career Guide</a></li>
-            <li class=""><a href="/about-us/"><i class="fa-solid fa-users"></i> About Us</a></li>
-            <li class=""><a href="/contact-us/"><i class="fa-solid fa-envelope"></i> Contact Us</a></li>
-            <li class=""><a href="/disclaimer/"><i class="fa-solid fa-circle-exclamation"></i> Disclaimer</a></li>
-            <li class=""><a href="/privacy-policy/"><i class="fa-solid fa-shield-halved"></i> Privacy Policy</a></li>
-            <li class="active"><a href="/term-and-conditions/"><i class="fa-solid fa-file-contract"></i> Term & Conditions</a></li>
-        </ul>
-        <div class="mobile-drawer-socials">
-            <a href="https://www.whatsapp.com/channel/0029VbCBBenJENxsVJQMwQ3p" target="_blank" rel="noopener" class="drawer-social-btn wa"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
-            <a href="https://t.me/+EV1cAhnn_6gxZTM1" target="_blank" rel="noopener" class="drawer-social-btn tg"><i class="fa-brands fa-telegram"></i> Telegram</a>
-        </div>
-    </div>
+    </nav>
 </header>
 
 <main class="gn-main-wrapper">
