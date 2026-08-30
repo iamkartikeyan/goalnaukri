@@ -4,8 +4,7 @@
   "description": "1:1 Exact Replica of Goal Naukri (goalnaukri.com) - Information related to Trusted Latest Jobs and Career.",
   "scripts": {
     "dev": "npx serve . -p 8080",
-    "start": "npx serve . -p 8080",
-    "build": "echo 'Static build ready'"
+    "start": "npx serve . -p 8080"
   },
   "keywords": [
     "goalnaukri",
