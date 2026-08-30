@@ -1,49 +1,69 @@
 /**
- * Goal Naukri Main Interactive JS
+ * Goal Naukri - Clean Interactive Mobile & Desktop Script
  */
 
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Mobile Menu Toggle
-    const menuToggle = document.querySelector('.menu-toggle');
-    const siteNavigation = document.getElementById('site-navigation') || document.querySelector('.main-navigation');
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const mobileDrawer = document.getElementById('mobile-drawer');
     
-    if (menuToggle && siteNavigation) {
-        menuToggle.addEventListener('click', (e) => {
-            e.preventDefault();
-            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-            menuToggle.setAttribute('aria-expanded', !isExpanded);
-            siteNavigation.classList.toggle('toggled');
+    if (mobileToggle && mobileDrawer) {
+        const iconBars = mobileToggle.querySelector('.menu-icon-bars');
+        const iconClose = mobileToggle.querySelector('.menu-icon-close');
+
+        const toggleDrawer = (e) => {
+            if (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            const isOpen = mobileDrawer.classList.toggle('open');
+            mobileToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            if (iconBars && iconClose) {
+                iconBars.style.display = isOpen ? 'none' : 'inline-block';
+                iconClose.style.display = isOpen ? 'inline-block' : 'none';
+            }
+        };
+
+        mobileToggle.addEventListener('click', toggleDrawer);
+
+        // Close drawer when tapping outside
+        document.addEventListener('click', (e) => {
+            if (mobileDrawer.classList.contains('open') && !mobileDrawer.contains(e.target) && !mobileToggle.contains(e.target)) {
+                mobileDrawer.classList.remove('open');
+                mobileToggle.setAttribute('aria-expanded', 'false');
+                if (iconBars && iconClose) {
+                    iconBars.style.display = 'inline-block';
+                    iconClose.style.display = 'none';
+                }
+            }
         });
     }
 
     // 2. Back to Top Button
     let backToTop = document.querySelector('.generate-back-to-top');
     if (!backToTop) {
-        backToTop = document.createElement('a');
-        backToTop.href = '#';
+        backToTop = document.createElement('button');
         backToTop.className = 'generate-back-to-top';
         backToTop.setAttribute('aria-label', 'Scroll to top');
-        backToTop.innerHTML = `
-            <svg viewBox="0 0 320 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor">
-                <path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.5 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/>
-            </svg>
-        `;
+        backToTop.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
         backToTop.style.position = 'fixed';
-        backToTop.style.bottom = '30px';
-        backToTop.style.right = '30px';
+        backToTop.style.bottom = '25px';
+        backToTop.style.right = '20px';
         backToTop.style.width = '42px';
         backToTop.style.height = '42px';
         backToTop.style.display = 'flex';
         backToTop.style.alignItems = 'center';
         backToTop.style.justifyContent = 'center';
-        backToTop.style.borderRadius = '4px';
-        backToTop.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+        backToTop.style.borderRadius = '50%';
+        backToTop.style.backgroundColor = '#1e59be';
         backToTop.style.color = '#ffffff';
+        backToTop.style.border = 'none';
+        backToTop.style.cursor = 'pointer';
         backToTop.style.zIndex = '9999';
         backToTop.style.opacity = '0';
         backToTop.style.visibility = 'hidden';
-        backToTop.style.transition = 'opacity 0.3s ease, visibility 0.3s ease, background-color 0.3s ease';
-        backToTop.style.textDecoration = 'none';
+        backToTop.style.transition = 'opacity 0.3s ease, visibility 0.3s ease, transform 0.2s ease';
+        backToTop.style.boxShadow = '0 4px 14px rgba(0,0,0,0.3)';
         document.body.appendChild(backToTop);
     }
 
@@ -57,102 +77,101 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    backToTop.addEventListener('click', (e) => {
-        e.preventDefault();
+    backToTop.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // 3. Search Bar Interaction
-    const searchInputs = document.querySelectorAll('input[type="search"]');
-    searchInputs.forEach(input => {
-        const form = input.closest('form');
-        if (form) {
-            form.addEventListener('submit', (e) => {
-                const query = input.value.trim();
-                if (query) {
-                    // Search in articles on page or filter
-                    const articles = document.querySelectorAll('article, .gb-container-fd6fcffb');
-                    if (articles.length > 0) {
-                        e.preventDefault();
-                        let foundCount = 0;
-                        articles.forEach(art => {
-                            const text = art.textContent.toLowerCase();
-                            if (text.includes(query.toLowerCase())) {
-                                art.style.display = '';
-                                foundCount++;
-                            } else {
-                                art.style.display = 'none';
-                            }
+    // 3. Search Filter Handling
+    const searchForms = document.querySelectorAll('.gn-search-form, form[role="search"], .wp-block-search');
+    searchForms.forEach(form => {
+        form.addEventListener('submit', (e) => {
+            const input = form.querySelector('input[type="search"], input[type="text"]');
+            if (input && input.value.trim()) {
+                const query = input.value.trim().toLowerCase();
+                const cards = document.querySelectorAll('.gn-post-card, article.post');
+                if (cards.length > 0) {
+                    e.preventDefault();
+                    let count = 0;
+                    cards.forEach(card => {
+                        if (card.textContent.toLowerCase().includes(query)) {
+                            card.style.display = 'flex';
+                            count++;
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+
+                    let notice = document.getElementById('search-notice');
+                    if (!notice) {
+                        notice = document.createElement('div');
+                        notice.id = 'search-notice';
+                        notice.style.padding = '14px 18px';
+                        notice.style.marginBottom = '20px';
+                        notice.style.backgroundColor = '#e7f5fe';
+                        notice.style.border = '1px solid #83b0de';
+                        notice.style.borderRadius = '8px';
+                        notice.style.color = '#2f4468';
+                        notice.style.fontSize = '14px';
+                        const container = document.querySelector('.gn-posts-list') || document.querySelector('.gn-content-area');
+                        if (container) container.insertBefore(notice, container.firstChild);
+                    }
+                    if (notice) {
+                        notice.innerHTML = `Showing results for: <strong>"${query}"</strong> (${count} found) - <a href="#" id="clear-search" style="color:#1b78e2; font-weight:600; text-decoration:underline;">Clear filter</a>`;
+                        document.getElementById('clear-search')?.addEventListener('click', (ce) => {
+                            ce.preventDefault();
+                            cards.forEach(c => c.style.display = 'flex');
+                            notice.remove();
+                            input.value = '';
                         });
-                        
-                        let searchNotice = document.getElementById('search-notice');
-                        if (!searchNotice) {
-                            searchNotice = document.createElement('div');
-                            searchNotice.id = 'search-notice';
-                            searchNotice.style.padding = '15px';
-                            searchNotice.style.marginBottom = '20px';
-                            searchNotice.style.backgroundColor = '#e7f5fe';
-                            searchNotice.style.border = '1px solid #83b0de';
-                            searchNotice.style.borderRadius = '4px';
-                            searchNotice.style.color = '#2f4468';
-                            const main = document.querySelector('main') || document.querySelector('#content');
-                            if (main) main.insertBefore(searchNotice, main.firstChild);
-                        }
-                        if (searchNotice) {
-                            searchNotice.innerHTML = `Showing results for: <strong>"${query}"</strong> (${foundCount} found) - <a href="#" id="clear-search" style="color: #1b78e2; text-decoration: underline;">Clear filter</a>`;
-                            document.getElementById('clear-search')?.addEventListener('click', (ce) => {
-                                ce.preventDefault();
-                                articles.forEach(art => art.style.display = '');
-                                searchNotice.remove();
-                                input.value = '';
-                            });
-                        }
                     }
                 }
-            });
-        }
+            }
+        });
     });
 
     // 4. Contact Form Handling
-    const contactForm = document.querySelector('.wpforms-form') || document.querySelector('form[action*="contact"]');
+    const contactForm = document.querySelector('.gn-contact-form') || document.querySelector('.wpforms-form');
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
-            if (submitBtn) {
-                const originalText = submitBtn.innerHTML;
-                submitBtn.disabled = true;
-                submitBtn.innerHTML = 'Sending...';
+            const btn = contactForm.querySelector('button[type="submit"], input[type="submit"]');
+            if (btn) {
+                const orig = btn.innerHTML || btn.value;
+                if (btn.tagName === 'INPUT') btn.value = 'भेजा जा रहा है...';
+                else btn.innerHTML = 'भेजा जा रहा है...';
+                btn.disabled = true;
+
                 setTimeout(() => {
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = originalText;
-                    
-                    const confirmation = document.createElement('div');
-                    confirmation.className = 'wpforms-confirmation-container-full';
-                    confirmation.style.padding = '20px';
-                    confirmation.style.backgroundColor = '#e9fbe5';
-                    confirmation.style.border = '1px solid #7bdcb5';
-                    confirmation.style.borderRadius = '4px';
-                    confirmation.style.marginTop = '20px';
-                    confirmation.style.color = '#006633';
-                    confirmation.innerHTML = '<strong>धन्यवाद!</strong> आपका संदेश सफलतापूर्वक भेज दिया गया है। हम जल्द ही आपसे संपर्क करेंगे।';
-                    
+                    btn.disabled = false;
+                    if (btn.tagName === 'INPUT') btn.value = orig;
+                    else btn.innerHTML = orig;
+
+                    const msg = document.createElement('div');
+                    msg.style.padding = '16px 20px';
+                    msg.style.backgroundColor = '#e9fbe5';
+                    msg.style.border = '1px solid #7bdcb5';
+                    msg.style.borderRadius = '8px';
+                    msg.style.marginTop = '20px';
+                    msg.style.color = '#006633';
+                    msg.style.fontSize = '15px';
+                    msg.innerHTML = '<strong>धन्यवाद!</strong> आपका संदेश सफलतापूर्वक भेज दिया गया है। हम जल्द ही आपसे संपर्क करेंगे।';
+
                     contactForm.reset();
-                    contactForm.parentNode.insertBefore(confirmation, contactForm.nextSibling);
-                    setTimeout(() => confirmation.remove(), 6000);
+                    contactForm.parentNode.insertBefore(msg, contactForm.nextSibling);
+                    setTimeout(() => msg.remove(), 6000);
                 }, 800);
             }
         });
     }
 
     // 5. Subscription Form Handling
-    const subForms = document.querySelectorAll('.reach-form-inline');
+    const subForms = document.querySelectorAll('.gn-sub-form, .reach-form-inline');
     subForms.forEach(sf => {
         sf.addEventListener('submit', (e) => {
             e.preventDefault();
             const input = sf.querySelector('input[type="email"]');
             if (input && input.value) {
-                alert(`Thank you for subscribing with ${input.value}! You will receive the latest job updates.`);
+                alert(`Thank you for subscribing with ${input.value}! You will receive latest job updates.`);
                 input.value = '';
             }
         });
