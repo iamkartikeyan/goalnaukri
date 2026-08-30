@@ -1,0 +1,19 @@
+{
+  "name": "goalnaukri-clone",
+  "version": "1.0.0",
+  "description": "1:1 Exact Replica of Goal Naukri (goalnaukri.com) - Information related to Trusted Latest Jobs and Career.",
+  "scripts": {
+    "dev": "npx serve . -p 8080",
+    "start": "npx serve . -p 8080",
+    "build": "echo 'Static build ready'"
+  },
+  "keywords": [
+    "goalnaukri",
+    "jobs",
+    "career-guide",
+    "admissions",
+    "hindi-jobs"
+  ],
+  "author": "Goal Naukri",
+  "license": "ISC"
+}
