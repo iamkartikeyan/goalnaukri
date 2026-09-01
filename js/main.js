@@ -1,5 +1,5 @@
 /**
- * Goal Naukri - Clean Interactive Mobile & Desktop Script
+ * Rojgaro - Clean Interactive Mobile & Desktop Script
  */
 
 document.addEventListener('DOMContentLoaded', () => {

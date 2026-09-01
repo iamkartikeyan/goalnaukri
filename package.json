@@ -1,18 +1,18 @@
 {
-  "name": "goalnaukri-clone",
+  "name": "rojgaro-clone",
   "version": "1.0.0",
-  "description": "1:1 Exact Replica of Goal Naukri (goalnaukri.com) - Information related to Trusted Latest Jobs and Career.",
+  "description": "1:1 Exact Replica of Rojgaro (rojgaro.com) - Information related to Trusted Latest Jobs and Career.",
   "scripts": {
     "dev": "npx serve . -p 8080",
     "start": "npx serve . -p 8080"
   },
   "keywords": [
-    "goalnaukri",
+    "rojgaro",
     "jobs",
     "career-guide",
     "admissions",
     "hindi-jobs"
   ],
-  "author": "Goal Naukri",
+  "author": "Rojgaro",
   "license": "ISC"
 }

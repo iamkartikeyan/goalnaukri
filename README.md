@@ -1,6 +1,6 @@
-# Goal Naukri (goalnaukri.com) - Exact Website Clone
+# Rojgaro (rojgaro.com) - Exact Website Clone
 
-This repository contains a **1:1 pixel-perfect exact replica** of [Goal Naukri](https://goalnaukri.com/) — Trusted source for Latest Jobs, Admissions, and Career Guidance in Hindi.
+This repository contains a **1:1 pixel-perfect exact replica** of [Rojgaro](https://rojgaro.com/) — Trusted source for Latest Jobs, Admissions, and Career Guidance in Hindi.
 
 ---
 
@@ -23,8 +23,8 @@ This repository contains a **1:1 pixel-perfect exact replica** of [Goal Naukri](
 To run locally:
 ```bash
 # Clone the repository
-git clone https://github.com/iamkartikeyan/goalnaukri.git
-cd goalnaukri
+git clone https://github.com/iamkartikeyan/rojgaro.git
+cd rojgaro
 
 # Start local server
 npx serve . -p 8080
