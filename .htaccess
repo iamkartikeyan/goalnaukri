@@ -9,7 +9,16 @@
     RewriteCond %{HTTPS} off
     RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-    # Clean URL handling (.html extension fallback)
+    # Route clean blog URLs (e.g. /become-ips/ -> /blogs/become-ips/index.html)
+    RewriteCond %{DOCUMENT_ROOT}/blogs/$1/index.html -f
+    RewriteRule ^([^/]+)/?$ blogs/$1/index.html [L]
+
+    # Route clean static pages (e.g. /about-us -> /about-us/index.html)
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}/index.html -f
+    RewriteRule ^(.*)$ $1/index.html [L]
+
+    # Fallback to .html if needed
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME}\.html -f
     RewriteRule ^(.*)$ $1.html [L]
