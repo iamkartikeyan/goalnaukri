@@ -1270,3 +1270,35 @@ figure {
     overflow-x: hidden !important;
   }
 }
+
+
+/* ── Sleek Professional Header Logo Sizing ── */
+.site-logo, .navigation-branding {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.site-logo img,
+.navigation-branding img,
+.header-image.is-logo-image {
+  height: 44px !important;
+  width: auto !important;
+  max-height: 44px !important;
+  object-fit: contain !important;
+  border-radius: 6px !important;
+  display: block !important;
+  transition: transform 0.2s ease !important;
+}
+
+.site-logo img:hover {
+  transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+  .site-logo img,
+  .navigation-branding img,
+  .header-image.is-logo-image {
+    height: 36px !important;
+    max-height: 36px !important;
+  }
+}

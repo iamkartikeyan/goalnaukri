@@ -563,6 +563,38 @@ figure {
   }
 }
 
+
+/* ── Sleek Professional Header Logo Sizing ── */
+.site-logo, .navigation-branding {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.site-logo img,
+.navigation-branding img,
+.header-image.is-logo-image {
+  height: 44px !important;
+  width: auto !important;
+  max-height: 44px !important;
+  object-fit: contain !important;
+  border-radius: 6px !important;
+  display: block !important;
+  transition: transform 0.2s ease !important;
+}
+
+.site-logo img:hover {
+  transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+  .site-logo img,
+  .navigation-branding img,
+  .header-image.is-logo-image {
+    height: 36px !important;
+    max-height: 36px !important;
+  }
+}
+
 </style>
 <script type="application/ld+json">
 {
@@ -576,7 +608,7 @@ figure {
       "logo": {
         "@type": "ImageObject",
         "@id": "https://rojgaro.com/#logo",
-        "url": "https://rojgaro.com/wp-content/uploads/2026/05/rojgaro-logo.png?v=4",
+        "url": "https://rojgaro.com/wp-content/uploads/2026/05/rojgaro-logo.png?v=5",
         "caption": "Rojgaro"
       },
       "sameAs": [
@@ -616,7 +648,7 @@ figure {
       <div class="site-logo">
         <a href="/" rel="home">
           <img class="header-image is-logo-image" alt="Rojgaro"
-               src="/wp-content/uploads/2026/05/rojgaro-logo.png?v=4"
+               src="/wp-content/uploads/2026/05/rojgaro-logo.png?v=5"
                width="350" height="70">
         </a>
       </div>
