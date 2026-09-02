@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /scratch/
+Disallow: /.git/
+
+Sitemap: https://rojgaro.com/sitemap.xml
+Sitemap: https://rojgaro.com/sitemap_index.xml
