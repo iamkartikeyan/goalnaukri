@@ -2,3 +2,6 @@ node_modules
 .DS_Store
 .vercel
 *.log
+*.zip
+.DS_Store
+rojgaro_hostinger_deploy/
