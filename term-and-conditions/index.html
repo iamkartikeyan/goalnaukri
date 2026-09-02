@@ -595,6 +595,207 @@ figure {
   }
 }
 
+
+/* ══════════════════════════════════════════════════════════════
+   ⭐ SLEEK & COMPACT PREMIUM HEADER DESIGN
+   ══════════════════════════════════════════════════════════════ */
+#site-navigation,
+.main-navigation {
+  background: #020953 !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 9999 !important;
+  width: 100% !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15) !important;
+}
+
+.inside-navigation {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 0 24px !important;
+  height: 58px !important;
+}
+
+/* ── Compact & Crisp Logo ── */
+.navigation-branding,
+.site-logo {
+  display: flex !important;
+  align-items: center !important;
+  margin-right: auto !important;
+  padding: 0 !important;
+}
+
+.site-logo a,
+.navigation-branding a {
+  display: inline-flex !important;
+  align-items: center !important;
+  text-decoration: none !important;
+}
+
+.site-logo img,
+.navigation-branding img,
+.header-image.is-logo-image,
+.header-image {
+  height: 32px !important;
+  width: auto !important;
+  max-height: 32px !important;
+  max-width: 150px !important;
+  object-fit: contain !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 4px !important;
+  transition: opacity 0.2s ease !important;
+}
+
+.site-logo img:hover {
+  opacity: 0.9;
+}
+
+/* ── Modern Beautiful Menu Links ── */
+.main-nav,
+#primary-menu {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.main-nav ul,
+.main-navigation .main-nav > ul,
+#menu-main-menu {
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.main-nav ul li,
+.main-navigation .main-nav ul li,
+#menu-main-menu li {
+  position: relative !important;
+  display: inline-block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.main-nav ul li a,
+.main-navigation .main-nav ul li a,
+#menu-main-menu li a {
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 7px 14px !important;
+  line-height: 1.2 !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+  font-size: 14.5px !important;
+  font-weight: 600 !important;
+  color: #e2e8f0 !important;
+  border-radius: 6px !important;
+  text-decoration: none !important;
+  letter-spacing: 0.2px !important;
+  transition: all 0.15s ease-in-out !important;
+}
+
+.main-nav ul li:hover > a,
+.main-navigation .main-nav ul li:hover > a,
+#menu-main-menu li:hover > a {
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: #ffffff !important;
+}
+
+.main-nav ul li.current-menu-item > a,
+.main-navigation .main-nav ul li.current-menu-item > a,
+#menu-main-menu li.current-menu-item > a {
+  background: #1b78e2 !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(27, 120, 226, 0.35) !important;
+}
+
+/* ── Search Icon Button ── */
+.menu-bar-items {
+  display: flex !important;
+  align-items: center !important;
+  margin-left: 10px !important;
+}
+
+.menu-bar-item,
+.menu-bar-items .menu-bar-item {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.menu-bar-item a,
+.menu-bar-item > a {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 36px !important;
+  height: 36px !important;
+  padding: 0 !important;
+  line-height: 36px !important;
+  color: #e2e8f0 !important;
+  border-radius: 6px !important;
+  transition: all 0.15s ease !important;
+}
+
+.menu-bar-item a:hover {
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: #ffffff !important;
+}
+
+.menu-bar-item svg,
+.gp-icon.icon-search svg {
+  width: 17px !important;
+  height: 17px !important;
+  fill: currentColor !important;
+}
+
+/* ── Mobile Menu Toggle ── */
+.menu-toggle {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+  padding: 6px 12px !important;
+  border-radius: 6px !important;
+  display: none;
+  align-items: center !important;
+  gap: 6px !important;
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  line-height: 1 !important;
+}
+
+.menu-toggle:hover {
+  background: rgba(255, 255, 255, 0.16) !important;
+}
+
+/* ── Mobile Responsiveness ── */
+@media (max-width: 768px) {
+  #site-navigation,
+  .main-navigation {
+    height: 52px !important;
+  }
+  .inside-navigation {
+    padding: 0 16px !important;
+    height: 52px !important;
+  }
+  .site-logo img,
+  .navigation-branding img,
+  .header-image.is-logo-image {
+    height: 26px !important;
+    max-height: 26px !important;
+    max-width: 120px !important;
+  }
+  .menu-toggle {
+    display: inline-flex !important;
+  }
+}
+
 </style>
 <script type="application/ld+json">
 {
