@@ -82,10 +82,10 @@ SITE_SCHEMA = """<script type="application/ld+json">
         "caption": "Rojgaro"
       },
       "sameAs": [
-        "https://www.whatsapp.com/channel/0029VbCBBenJENxsVJQMwQ3p",
-        "https://t.me/+EV1cAhnn_6gxZTM1",
-        "https://x.com/rojgaro",
-        "https://youtube.com/@rojgaro"
+        "https://chat.whatsapp.com/Lnb4fxnJTQmJByUOzhxvnT",
+        "https://t.me/rojgaro",
+        "https://x.com/rojgaro_",
+        "https://www.instagram.com/rojgaro"
       ]
     },
     {
